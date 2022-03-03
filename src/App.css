@@ -1,0 +1,22 @@
+.app {
+	padding-left: 6.5vw;
+	padding-bottom: 72px;
+	position: relative;
+	min-height: 100%;
+}
+
+.flex {
+	display: flex;
+}
+
+.align_center {
+	align-items: center;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.no_text_deco {
+	text-decoration: none;
+}

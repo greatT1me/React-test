@@ -1,0 +1,41 @@
+.currencyValue {
+	padding: 10px 20px;
+	line-height: 28.8px;
+}
+
+.currencyValueHovered:hover {
+	box-shadow: 0px 2px 20px rgba(168, 172, 176, 0.19);
+	color: blue;
+}
+
+.vector {
+	margin-right: 22px;
+	position: relative;
+	top: 3px;
+	line-height: 28.8px;
+}
+
+.dropdown {
+	font-size: 18px;
+	position: absolute;
+	width: 114px;
+	padding: 10px 0;
+	background-color: white;
+	box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
+	margin-top: 8px;
+	font-family: Raleway;
+	font-weight: 500;
+}
+.outer_box {
+	display: flex;
+	width: 61px;
+	font-size: 18px;
+	margin-left: 20px;
+}
+
+.inner_box {
+	display: flex;
+	width: 61px;
+	justify-content: center;
+	justify-items: center;
+}

@@ -1,0 +1,134 @@
+.pdp_outer_container {
+	padding-top: 80px;
+	display: flex;
+}
+.pdp_inner_container {
+	max-width: 120px;
+}
+
+.product_Choise {
+	max-height: 80px;
+	max-width: 80px;
+	margin-bottom: 40px;
+	margin-right: 40px;
+	cursor: pointer;
+	justify-self: center;
+}
+
+.chosen_product_div {
+	width: 610px;
+	height: 511px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 100px;
+	position: relative;
+}
+.chosen_product {
+	max-width: 610px;
+	max-height: 511px;
+	background-color: gray;
+}
+.out_of_stock_pdp {
+	font-family: Raleway;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 34px;
+	line-height: 160%;
+	position: absolute;
+	color: #8d8f9a;
+	left: 25.42%;
+	right: 25.71%;
+	top: calc(50%-34px);
+}
+.description {
+	width: 292px;
+	height: auto;
+}
+
+.product_name {
+	font-family: Raleway;
+	margin-top: 16px;
+	margin-bottom: 43px;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 27px;
+}
+
+.add_btn {
+	width: 292px;
+	height: 52px;
+	background-color: #5ece7b;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	color: white;
+	margin-top: 20px;
+	margin-bottom: 40px;
+	font-family: Raleway;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 120%;
+	display: flex;
+}
+
+.add_btn:hover {
+	cursor: pointer;
+}
+
+.add_btn:active {
+	animation: click_effect 0.1s forwards;
+}
+
+.description {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 159.96%;
+}
+
+.attribute_row {
+	height: 45px;
+	width: 63px;
+	margin-right: 12px;
+	display: flex;
+	justify-content: center;
+	font-family: Source Sans Pro;
+	font-size: 16px;
+	align-items: center;
+	margin-top: 0;
+	margin-bottom: 40px;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.attribute_name {
+	margin-bottom: 8px;
+	margin-top: 0;
+	font-size: 18px;
+	font-weight: bold;
+	font-family: Roboto Condensed;
+}
+
+.pdp_word_price {
+	margin-bottom: 10px;
+	margin-top: 0;
+	font-size: 18px;
+	line-height: 18px;
+	font-weight: bold;
+	font-family: Roboto Condensed;
+}
+
+.pdp_price {
+	font-size: 24px;
+	font-family: Raleway;
+}
+
+.pdp_brand {
+	margin-top: 0;
+	margin-bottom: 16px;
+	padding-top: 0;
+}

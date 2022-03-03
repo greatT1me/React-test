@@ -1,0 +1,225 @@
+.grey_screen {
+	width: 100%;
+	min-height: calc(100vh - 82px);
+	height: calc(100% - 82px);
+	position: absolute;
+	justify-content: flex-end;
+	left: 0px;
+	display: flex;
+	top: 82px;
+	display: flow-root;
+	background: rgba(57, 55, 72, 0.22);
+}
+.main_container {
+	width: 310px;
+	font-family: Raleway;
+	padding: 6px 16px 20px;
+	background-color: white;
+	position: inherit;
+	right: 90px;
+}
+.my_bag {
+	font-style: normal;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 160%;
+	margin-bottom: 25px;
+	font-family: Raleway;
+}
+.lighter {
+	font-weight: lighter;
+}
+.mini_cartItem {
+	width: 100%;
+	display: grid;
+	min-height: 137px;
+	grid-template-columns: auto 24px 105px;
+	grid-column-gap: 10px;
+	margin-bottom: 41px;
+}
+.mini_brand_name {
+	margin-top: 0;
+	padding-top: 0;
+	margin-bottom: 5px;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 25.6px;
+}
+.mini_price {
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 25.6px;
+	margin: 5px 0 15px;
+}
+/* style={{display:"flex", flexDirection:"column"}}  */
+.mini_attributes_container {
+	display: flex;
+	flex-direction: column;
+}
+.mini_item_amount_control {
+	display: grid;
+	grid-template-rows: 25px auto 25px;
+	position: relative;
+}
+.mini_item_pic {
+	align-content: center;
+	align-items: center;
+	display: flex;
+	position: relative;
+}
+.mini_item_amount {
+	align-self: center;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+.mini_plus_minus {
+	width: 24px;
+	height: 24px;
+	justify-content: center;
+	cursor: pointer;
+	align-items: center;
+	display: flex;
+	border: 1px solid #1d1f22;
+}
+.mini_minus_line {
+	width: 8px;
+	border: none;
+	height: 1px;
+	background-color: #1d1f22;
+}
+.mini_vertical-line {
+	height: 8px;
+	width: 1px;
+	border: none;
+	background-color: #1d1f22;
+	position: absolute;
+}
+.mini_chosen_img {
+	object-fit: contain;
+	width: 105px;
+	display: flex;
+}
+.mini_delete_item {
+	position: absolute;
+	font-weight: lighter;
+	font-size: 16px;
+	cursor: pointer;
+	margin: 0;
+	top: -5px;
+	left: 170px;
+}
+.mini_delete_item :hover {
+	color: red;
+}
+.total {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	max-width: 955px;
+}
+.word_total {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 18px;
+}
+.total_price {
+	justify-content: flex-end;
+	display: flex;
+	width: 100%;
+	font-family: Raleway;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 160%;
+}
+.view_bag {
+	width: 140px;
+	height: 43px;
+	background: #ffffff;
+	display: flex;
+	margin-top: 19px;
+	font-size: 14px;
+	border: 1px solid #1d1f22;
+	box-sizing: border-box;
+	justify-content: center;
+	font-weight: 600;
+	align-items: center;
+	cursor: pointer;
+	text-decoration: none;
+	color: #1d1f22;
+	font-family: Raleway;
+	font-style: normal;
+	line-height: 120%;
+}
+.check_out {
+	width: 140px;
+	height: 43px;
+	background: #ffffff;
+	display: flex;
+	margin-top: 19px;
+	box-sizing: border-box;
+	justify-content: center;
+	align-items: center;
+	justify-self: end;
+	background: #5ece7b;
+	text-transform: uppercase;
+	font-family: Raleway;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 120%;
+	color: #ffffff;
+	cursor: pointer;
+}
+.minicart_attribute {
+	height: 24px;
+	min-width: 24px;
+	margin-right: 8px;
+	display: flex;
+	justify-content: center;
+	font-family: Source Sans Pro;
+	font-size: 14px;
+	align-items: center;
+	line-height: 160%;
+	font-weight: 400;
+	box-sizing: border-box;
+	background-color: white;
+	border: 1px solid #1d1f22;
+	padding: 2px;
+}
+.mini_attributeName {
+	margin: 8px 10px 6px 0;
+	font-size: 14px;
+	font-family: "Roboto Condensed";
+	color: #1d1f22;
+}
+.mini_attribute_row {
+	height: 24px;
+	min-width: 24px;
+	margin-right: 8px;
+	display: flex;
+	justify-content: center;
+	font-family: Source Sans Pro;
+	font-size: 14px;
+	align-items: center;
+	margin-top: 5px;
+	font-weight: 400;
+	line-height: 160%;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+.scroll_container {
+	max-height: 52vh;
+	overflow-y: scroll;
+	padding-right: 2px;
+}
+.scroll_container::-webkit-scrollbar {
+	width: 6px;
+}
+.scroll_container::-webkit-scrollbar-thumb {
+	height: 2px;
+	background: rgba(57, 55, 72, 0.22);
+	border-radius: 6px;
+}

@@ -1,0 +1,69 @@
+.product {
+	position: relative;
+	width: 25.5vw;
+	padding: 1.1vw;
+	margin: 0 2.7vw 90px 0;
+}
+
+.product1:hover {
+	box-shadow: 0px 4px 35px 0px rgba(168, 172, 176, 0.19);
+	cursor: pointer;
+}
+
+.plp_product_img_container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.plp_product_img {
+	max-width: 24vw;
+	max-height: 330px;
+	position: static;
+}
+
+.product_card_brand_name {
+	margin-top: 24px;
+	margin-bottom: 0;
+	line-height: 160%;
+	font-family: Raleway;
+	font-weight: 300;
+	font-size: 18px;
+	font-style: normal;
+}
+
+.product_card_price {
+	margin-top: 0;
+	margin-bottom: 0;
+	line-height: 160%;
+	font-family: Raleway;
+	font-weight: 500;
+	font-size: 18px;
+}
+
+.common {
+	position: absolute;
+	right: 31px;
+	bottom: 72px;
+}
+
+.ProductPage {
+	text-decoration: none;
+}
+
+.productPage_nomore {
+	cursor: default;
+}
+
+.out_of_stock {
+	font-family: Raleway;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 24px;
+	line-height: 160%;
+	position: absolute;
+	color: #8d8f9a;
+	left: 25.42%;
+	right: 25.71%;
+	top: 151px;
+}
