@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import { client } from "../App";
+import { client, MyContext } from "../App";
 import { ApolloProvider, gql } from "@apollo/client";
 import { Query } from "@apollo/client/react/components";
 import LeftVector from "./left-Vector.svg";
 import RightVector from "./right-Vector.svg";
 
+let element;
+let heightOfEl;
 export class CartItem extends Component {
 	constructor(props) {
 		super(props);
@@ -12,10 +14,13 @@ export class CartItem extends Component {
 			picIndex: 0,
 			deleted: false,
 		};
+		this.myRef = React.createRef();
 		this.increase = this.increase.bind(this);
 		this.decrease = this.decrease.bind(this);
 		this.nextPic = this.nextPic.bind(this);
 	}
+	// static contextType = MyContext;
+
 	prevPic(gallery) {
 		// Gives us url of next img, if it is the last one, gives url of the firstone.
 		const { picIndex } = this.state;
@@ -51,11 +56,14 @@ export class CartItem extends Component {
 			UpdateItem(name, "itemAmount", itemInfo.itemAmount - 1);
 		} else {
 			this.setState({ deleted: true });
-			setTimeout(() => removeFromCart(name), [95]);
+			element = this.myRef.current;
+			heightOfEl = getComputedStyle(element);
+			setTimeout(() => removeFromCart(name, heightOfEl), [95]);
 		}
 	}
 	render() {
-		const { itemInfo, selectedCurrency } = this.props;
+		let selectedCurrency = MyContext._currentValue;
+		const { itemInfo } = this.props;
 		const { picIndex } = this.state;
 		// We get id from app.js inCartItems, that is passed through cart.js.
 		const { id } = itemInfo;
@@ -94,7 +102,7 @@ export class CartItem extends Component {
 								let imgUrl = gallery[picIndex];
 								let PRICE;
 								return (
-									<div className="cart_item_main">
+									<div className="cart_item_main" ref={this.myRef}>
 										<hr className="divedeLine" />
 										<div className="cartItem">
 											<div>
@@ -180,9 +188,19 @@ export class CartItem extends Component {
 		} else {
 			// When user deletes an item, a white box appears on it's place,
 			// shrinking in height over 0.1 sec this gives us, little animation.
-			return <div className="smooth_delete"></div>;
+			return (
+				<div
+					className="smooth_delete"
+					style={{
+						animation: `deleting_smoothly ${
+							heightOfEl ? heightOfEl * heightOfEl * heightOfEl + 10 : 10
+						}s`,
+					}}
+				></div>
+			);
 		}
 	}
 }
+// CartItem.contextType = MyContext;
 
 export default CartItem;

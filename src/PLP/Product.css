@@ -1,7 +1,7 @@
 .product {
 	position: relative;
-	width: 25.5vw;
-	padding: 1.1vw;
+	width: 24vw;
+	padding: 1vw;
 	margin: 0 2.7vw 90px 0;
 }
 
@@ -17,6 +17,7 @@
 }
 
 .plp_product_img {
+	min-height: 200px;
 	max-width: 24vw;
 	max-height: 330px;
 	position: static;
@@ -38,7 +39,7 @@
 	line-height: 160%;
 	font-family: Raleway;
 	font-weight: 500;
-	font-size: 18px;
+	font-size: 18p;
 }
 
 .common {

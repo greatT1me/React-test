@@ -3,6 +3,7 @@ import PlpAttribute from "./PlpAttribute";
 import Common from "./Common.svg";
 import "./Product.css";
 import { Link } from "react-router-dom";
+import { MyContext } from "../App";
 
 export default class Product extends Component {
 	constructor(props) {
@@ -37,7 +38,8 @@ export default class Product extends Component {
 		}
 	}
 	render() {
-		const { product, price, addToCart, selectedCurrency } = this.props;
+		let selectedCurrency = MyContext._currentValue;
+		const { product, price, addToCart } = this.props;
 		const { inStock, id, attributes, category } = product;
 		const link = `/category/${category}/productId/${product.id}`;
 		const itemToSend1 = { id: product.id, price: price };

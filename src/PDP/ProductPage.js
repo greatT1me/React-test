@@ -2,7 +2,7 @@ import Attribute from "./Attribute";
 import DOMPurify from "dompurify";
 import React, { Component } from "react";
 import "./ProductPage.css";
-import { client } from "../App";
+import { client, MyContext } from "../App";
 import { ApolloProvider, gql } from "@apollo/client";
 import { Query } from "@apollo/client/react/components";
 
@@ -29,7 +29,8 @@ export default class PDPage extends Component {
 		);
 	}
 	render() {
-		const { selectedCurrency, routeProps } = this.props;
+		let selectedCurrency = MyContext._currentValue;
+		const { routeProps } = this.props;
 		// Getting id as a prop from route, that is created on product card click,
 		// and using this id, we fetch the needed data about this product.
 		const { id } = routeProps.match.params;
@@ -101,7 +102,6 @@ export default class PDPage extends Component {
 										<Attribute
 											attributes={attributes}
 											price={PRICE}
-											selectedCurrency={selectedCurrency}
 											addToCart={this.props.addToCart}
 											id={id}
 											inStock={inStock}

@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import "./Cart.css";
 import CartItem from "./CartItem";
+import { MyContext } from "../App";
 
 export class Cart extends Component {
 	render() {
 		let totalPrice = 0;
-		const { selectedCurrency, inCartItems, removeFromCart, UpdateItem } = this.props;
+		const { inCartItems, removeFromCart, UpdateItem } = this.props;
+		let selectedCurrency = MyContext._currentValue;
 		return (
 			<div className="cart_main">
 				<h1 className="word_Cart">CART</h1>
@@ -15,7 +17,6 @@ export class Cart extends Component {
 					return (
 						<CartItem
 							key={"cart" + item}
-							selectedCurrency={selectedCurrency}
 							itemInfo={inCartItems[item]}
 							name={item}
 							removeFromCart={removeFromCart}

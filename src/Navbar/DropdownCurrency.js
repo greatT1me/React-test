@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import vectorDown from "./Vector Down.svg";
 import vectorUp from "./Vector.svg";
 import "./DropdownCurrency.css";
-import { client } from "../App";
+import { client, MyContext } from "../App";
 import { ApolloProvider, gql } from "@apollo/client";
 import { Query } from "@apollo/client/react/components";
 
@@ -28,6 +28,7 @@ export default class DropdownCurrency extends Component {
 		}
 	}
 	render() {
+		let selectedCurrency = MyContext._currentValue;
 		const GET_CURRENCIES = gql`
 			query {
 				currencies {
@@ -44,7 +45,7 @@ export default class DropdownCurrency extends Component {
 				onClick={this.toggleDropdown}
 			>
 				<div className="outer_box">
-					<div className="inner_box">{this.props.choice}</div>
+					<div className="inner_box">{selectedCurrency}</div>
 					<img className="vector" src={!this.state.isOpen ? vectorDown : vectorUp} alt="vector" />
 				</div>
 				<ApolloProvider client={client}>

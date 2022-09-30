@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import MiniCartItem from "./MiniCartItem";
 import "./MiniCart.css";
 import { Link } from "react-router-dom";
+import { MyContext } from "../App";
 
 export class MiniCart extends Component {
 	render() {
-		const { selectedCurrency, inCartItems, removeFromCart, UpdateItem, openMiniCart } = this.props;
+		let selectedCurrency = MyContext._currentValue;
+		const { inCartItems, removeFromCart, UpdateItem, openMiniCart } = this.props;
 		const itemsNum = Object.keys(inCartItems).length; // Tells us how many items are in the cart
 		let totalPrice = 0;
 		return (
@@ -26,7 +28,6 @@ export class MiniCart extends Component {
 							return (
 								<MiniCartItem
 									key={"miniCart" + item}
-									selectedCurrency={selectedCurrency}
 									itemInfo={inCartItems[item]}
 									name={item}
 									removeFromCart={removeFromCart}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { ApolloProvider, gql } from "@apollo/client";
 import { Query } from "@apollo/client/react/components";
-import { client } from "../App";
+import { client, MyContext } from "../App";
 
 export class MiniCartItem extends Component {
 	constructor(props) {
@@ -25,7 +25,8 @@ export class MiniCartItem extends Component {
 		}
 	}
 	render() {
-		const { itemInfo, selectedCurrency } = this.props;
+		let selectedCurrency = MyContext._currentValue;
+		const { itemInfo } = this.props;
 		// We get id from app.js inCartItems, that is passed through minicart.
 		const { id } = itemInfo;
 		const GET_PRODUCT_INFO = gql`

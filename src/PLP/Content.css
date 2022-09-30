@@ -3,9 +3,33 @@
 	flex-wrap: wrap;
 }
 
+.plp_list {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 90vw;
+}
+
+.filter {
+	height: 80%;
+	width: 10vw;
+	background-color: lightgray;
+	position: fixed;
+	left: 0%;
+	top: 15%;
+	border-radius: 5px;
+}
+
+.each_filter_attribute {
+	margin: 4vh 0 2vh 0.5vw;
+	font-size: 14px;
+	font-weight: bold;
+	font-family: Roboto Condensed;
+}
+
 .plp {
 	font-family: Raleway;
 	background-color: white;
+	margin-left: 5%;
 }
 .category_name {
 	font-family: Raleway;
@@ -15,4 +39,25 @@
 	line-height: 160%;
 	margin-bottom: 100px;
 	padding-top: 59px;
+}
+.each_filter_colorbox {
+	height: 1.65vw;
+	min-width: 1.65vw;
+	display: flex;
+	justify-content: center;
+	font-family: Source Sans Pro;
+	font-size: 14px;
+	align-items: center;
+	line-height: 160%;
+	font-weight: 400;
+	box-sizing: border-box;
+	cursor: pointer;
+	margin: 0.25vw;
+}
+.color_filter_container {
+	flex-wrap: wrap;
+}
+.filter_checkbox {
+	min-height: 1vw;
+	min-width: 1vw;
 }

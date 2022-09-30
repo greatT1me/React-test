@@ -7,6 +7,7 @@
 		"@testing-library/jest-dom": "^5.15.0",
 		"@testing-library/react": "^11.2.7",
 		"@testing-library/user-event": "^12.8.3",
+		"cross-env": "^7.0.3",
 		"dompurify": "^2.3.5",
 		"graphql": "^16.0.1",
 		"react": "^17.0.2",
@@ -34,9 +35,9 @@
 			"not op_mini all"
 		],
 		"development": [
-			"last 1 chrome version",
 			"last 1 firefox version",
-			"last 1 safari version"
+			"last 1 safari version",
+			"last 1 chrome version"
 		]
 	}
 }

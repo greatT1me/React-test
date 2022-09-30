@@ -1,7 +1,7 @@
 import "./App.css";
 import { ApolloProvider, ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { Query } from "@apollo/client/react/components";
-import { Component } from "react";
+import React, { Component } from "react";
 import Navbar from "./Navbar/Navbar";
 import Content from "./PLP/Content";
 import { Route, Switch, Redirect } from "react-router-dom";
@@ -20,6 +20,7 @@ const GET_DATA = gql`
 		}
 	}
 `;
+const MyContext = React.createContext("$");
 
 class App extends Component {
 	constructor(props) {
@@ -34,6 +35,7 @@ class App extends Component {
 		this.removeFromCart = this.removeFromCart.bind(this);
 		this.UpdateItem = this.UpdateItem.bind(this);
 		this.openMiniCart = this.openMiniCart.bind(this);
+		this.updateURL = this.updateURL.bind(this);
 	}
 	openMiniCart() {
 		this.setState((st) => {
@@ -65,6 +67,12 @@ class App extends Component {
 		}
 		// Key of this item will be it's id.
 	}
+	updateURL(url) {
+		// when clicking Navlink, we get the path so that would not be valid by itself, so we store
+		//  the path in the state and add to it the part written below, then it can be used in redirect.
+		let newUrl = url + "/filters:";
+		this.setState({ url: newUrl });
+	}
 	UpdateItem(itemName, attributeName, attributeValue) {
 		// This is now used to update ammount only.
 		const newAttributes = this.state.inCartItems[itemName];
@@ -77,88 +85,85 @@ class App extends Component {
 		this.setState({ selectedCurrency: selected });
 	}
 	render() {
-		const { selectedCurrency, inCartItems, isMinicartOpen } = this.state;
+		const { selectedCurrency, inCartItems, isMinicartOpen, url } = this.state;
 		return (
-			<ApolloProvider client={client}>
-				<Query query={GET_DATA}>
-					{({ data }) => {
-						if (data) {
-							let totalCartItemQuantity = 0;
-							Object.keys(this.state.inCartItems).map((item) => {
-								// calculating total cart item quantity, to pass than to navbar as a prop.
-								totalCartItemQuantity += this.state.inCartItems[item].itemAmount;
-								return null;
-							});
-							return (
-								<div className="app">
-									<Navbar
-										data={data}
-										handleChoice={this.handleChoice}
-										selectedCurrency={selectedCurrency}
-										totalCartItemQuantity={totalCartItemQuantity}
-										openMiniCart={this.openMiniCart}
-									/>
-									<Switch>
-										<Route
-											exact
-											path="/category/:category"
-											render={(routeProps) => (
-												<Content
-													selectedCurrency={selectedCurrency}
-													addToCart={this.addToCart}
-													routeProps={routeProps}
-												/>
-											)}
-										/>
-										{/* // If we get id and link from product, that was clicked, 
-                      // we create pdp route with them, and pass id as a prop to use than to fetch some data. */}
-										<Route
-											exact
-											path="/category/:category/productId/:id"
-											render={(routeProps) => (
-												<PDPage
-													selectedCurrency={this.state.selectedCurrency}
-													addToCart={this.addToCart}
-													routeProps={routeProps}
-												/>
-											)}
-										/>
-										<Route
-											exact
-											path="/category/all/Cart"
-											render={() => (
-												<Cart
-													selectedCurrency={selectedCurrency}
-													removeFromCart={this.removeFromCart}
-													inCartItems={inCartItems}
-													UpdateItem={this.UpdateItem}
-												/>
-											)}
-										/>
-										<Route exact path="/">
-											<Redirect to="/category/all" />
-										</Route>
-									</Switch>
-									{/* // If mini cart is open, a grey screen blocks everything behind the mini cart */}
-									{isMinicartOpen ? (
-										<MiniCart
-											removeFromCart={this.removeFromCart}
-											inCartItems={inCartItems}
-											selectedCurrency={selectedCurrency}
-											UpdateItem={this.UpdateItem}
+			<MyContext.Provider value={selectedCurrency}>
+				<ApolloProvider client={client}>
+					<Query query={GET_DATA}>
+						{({ data }) => {
+							if (data) {
+								let totalCartItemQuantity = 0;
+								Object.keys(this.state.inCartItems).map((item) => {
+									// calculating total cart item quantity, to pass than to navbar as a prop.
+									totalCartItemQuantity += this.state.inCartItems[item].itemAmount;
+									return null;
+								});
+								return (
+									<div className="app">
+										<Navbar
+											data={data}
+											handleChoice={this.handleChoice}
+											totalCartItemQuantity={totalCartItemQuantity}
 											openMiniCart={this.openMiniCart}
+											updateURL={this.updateURL}
 										/>
-									) : null}
-								</div>
-							);
-						}
-						return null;
-					}}
-				</Query>
-			</ApolloProvider>
+										<Switch>
+											<Route
+												exact
+												path="/category/:category/filters/:filtersString"
+												render={(routeProps) => (
+													<Content addToCart={this.addToCart} routeProps={routeProps} />
+												)}
+											/>
+											{/* // If we get id and link from product, that was clicked, 
+												// we create pdp route with them, and pass id as a prop to use than to fetch some data. */}
+											<Route
+												exact
+												path="/category/:category/productId/:id"
+												render={(routeProps) => (
+													<PDPage addToCart={this.addToCart} routeProps={routeProps} />
+												)}
+											/>
+											<Route
+												exact
+												path="/category/all/Cart"
+												render={() => (
+													<Cart
+														removeFromCart={this.removeFromCart}
+														inCartItems={inCartItems}
+														UpdateItem={this.UpdateItem}
+													/>
+												)}
+											/>
+											<Route exact path="/">
+												<Redirect to="/category/all/filters/filters:" />
+											</Route>
+											<Route exact path="/category/:category/filters/">
+												{/* this redirect is required so that navlink sends client to valid link 
+												and still, it stays active */}
+												<Redirect to={url || ""} />
+											</Route>
+										</Switch>
+										{/* // If mini cart is open, a grey screen blocks everything behind the mini cart */}
+										{isMinicartOpen ? (
+											<MiniCart
+												removeFromCart={this.removeFromCart}
+												inCartItems={inCartItems}
+												UpdateItem={this.UpdateItem}
+												openMiniCart={this.openMiniCart}
+											/>
+										) : null}
+									</div>
+								);
+							}
+							return null;
+						}}
+					</Query>
+				</ApolloProvider>
+			</MyContext.Provider>
 		);
 	}
 }
 
 export default App;
-export { client };
+export { client, MyContext };

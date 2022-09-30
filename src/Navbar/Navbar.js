@@ -7,8 +7,7 @@ import { NavLink } from "react-router-dom";
 
 class Navbar extends Component {
 	render() {
-		const { handleChoice, selectedCurrency, openMiniCart, data, totalCartItemQuantity } =
-			this.props;
+		const { handleChoice, openMiniCart, data, totalCartItemQuantity, updateURL } = this.props;
 		const itemsNum = totalCartItemQuantity;
 		// Total quantity badge.
 		const numCircle = <div className="num_circle">{itemsNum}</div>;
@@ -18,7 +17,7 @@ class Navbar extends Component {
 					{/* Container for category links. */}
 					{data.categories.map((category) => {
 						const { name } = category;
-						const link = `/category/${name}`;
+						const link = `/category/${name}/filters`;
 						// Drawing category links.
 						return (
 							<NavLink
@@ -26,6 +25,7 @@ class Navbar extends Component {
 								activeClassName="active nav_btn"
 								className="nav_btn"
 								key={"key" + name}
+								onClick={() => updateURL(link)}
 							>
 								{name}
 							</NavLink>
@@ -35,7 +35,7 @@ class Navbar extends Component {
 				<img className="logo" src={Brand_icon} alt="logo" />
 				<div className="end_part">
 					{/* Container for dropdown currency and minicart img. */}
-					<DropdownCurrency choose={handleChoice} choice={selectedCurrency} />
+					<DropdownCurrency choose={handleChoice} />
 					<div className="pointer" onClick={openMiniCart}>
 						<img src={Empty_Cart} alt="Empty cart" />
 						{itemsNum > 0 ? numCircle : null}

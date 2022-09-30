@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { MyContext } from "../App";
 
 export class Attribute extends Component {
 	constructor(props) {
@@ -65,10 +66,11 @@ export class Attribute extends Component {
 	addToCartBtn(itemToSend) {
 		// Checks if every atrtribute is chosen, to change btn-s color to green.
 		const ready = this.props.attributes.length === Object.keys(this.state).length;
+		let selectedCurrency = MyContext._currentValue;
 		return (
 			<div>
 				<h3 className="pdp_word_price">price:</h3>
-				<h2 className="pdp_price">{this.props.selectedCurrency + itemToSend.price}</h2>
+				<h2 className="pdp_price">{selectedCurrency + itemToSend.price}</h2>
 				<div
 					className="add_btn"
 					style={{
