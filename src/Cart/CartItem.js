@@ -127,18 +127,35 @@ export class CartItem extends Component {
 															>
 																<div className="cart_attributeName">{name + ":"}</div>
 																<div className="flex">
-																	<div
-																		key={this.props.name + name}
-																		className="cart_attribute"
-																		style={
-																			type === "swatch"
-																				? { backgroundColor: `${itemInfo[name]}` }
-																				: null
-																		}
-																	>
-																		{/* If the attribute is text write value, else don't write anything */}
-																		{type !== "swatch" ? itemInfo[name] : null}
-																	</div>
+																	{attribute.items.map((item) => {
+																		const { value } = item;
+																		const classNam =
+																			type === "swatch" //if swatch
+																				? itemInfo[name] === value //and selected
+																					? "cart_attribute_color cart_attribute_color_selected"
+																					: // add some green outline
+																					  "cart_attribute_color"
+																				: itemInfo[name] === value // if selected value
+																				? "cart_attribute cart_attribute_value_selected"
+																				: // give black background and white font
+																				  "cart_attribute";
+
+																		return (
+																			<div
+																				key={this.props.name + name + value}
+																				className={classNam}
+																				style={
+																					type === "swatch"
+																						? //itemInfo[name]
+																						  { backgroundColor: value }
+																						: null
+																				}
+																			>
+																				{/*If the attribute is text write value, else don't write anything */}
+																				{type !== "swatch" ? value : null}
+																			</div>
+																		);
+																	})}
 																</div>
 															</div>
 														);

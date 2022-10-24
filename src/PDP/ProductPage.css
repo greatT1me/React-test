@@ -113,6 +113,19 @@
 	font-family: Roboto Condensed;
 }
 
+.attribute_color {
+	height: 34px;
+	width: 34px;
+	margin-right: 12px;
+	display: flex;
+	justify-content: center;
+	box-sizing: border-box;
+	border: 2px solid white;
+}
+
+.attribute_color_selected {
+	outline: 2px solid #5ece7b;
+}
 .pdp_word_price {
 	margin-bottom: 10px;
 	margin-top: 0;

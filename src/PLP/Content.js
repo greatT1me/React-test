@@ -126,6 +126,7 @@ export default class Content extends Component {
 																product={product}
 																addToCart={addToCart}
 																price={PRICE}
+																prices={product.prices}
 																category={category}
 															/>
 														);

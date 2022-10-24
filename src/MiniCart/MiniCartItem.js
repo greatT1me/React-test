@@ -80,6 +80,7 @@ export class MiniCartItem extends Component {
 											<div className="mini_attributes_container">
 												{/* Container for attributes */}
 												{attributes.map((attribute) => {
+													//________________________________________________________________________________
 													// Drawing each selected attribute with it's attribute name.
 													const { type, name } = attribute;
 													return (
@@ -89,18 +90,36 @@ export class MiniCartItem extends Component {
 														>
 															<div className="mini_attributeName">{name + ":"}</div>
 															<div className="flex">
-																<div
-																	key={this.props.name + name}
-																	className="minicart_attribute"
-																	style={
-																		type === "swatch"
-																			? { backgroundColor: `${itemInfo[name]}` }
-																			: null
-																	}
-																>
-																	{/*If the attribute is text write value, else don't write anything */}
-																	{type !== "swatch" ? itemInfo[name] : null}
-																</div>
+																{attribute.items.map((item) => {
+																	const { value } = item;
+																	// console.log(attribute);
+																	const classNam =
+																		type === "swatch" //if swatch
+																			? itemInfo[name] === value //and selected
+																				? "minicart_attribute_color minicart_attribute_color_selected"
+																				: // add some green outline
+																				  "minicart_attribute_color"
+																			: itemInfo[name] === value // if selected value
+																			? "minicart_attribute minicart_attribute_value_selected"
+																			: // give black background and white font
+																			  "minicart_attribute";
+
+																	return (
+																		<div
+																			key={this.props.name + name + value}
+																			className={classNam}
+																			style={
+																				type === "swatch"
+																					? //itemInfo[name]
+																					  { backgroundColor: value }
+																					: null
+																			}
+																		>
+																			{/*If the attribute is text write value, else don't write anything */}
+																			{type !== "swatch" ? value : null}
+																		</div>
+																	);
+																})}
 															</div>
 														</div>
 													);

@@ -91,16 +91,16 @@ export default class PDPage extends Component {
 									<div className="description">
 										<h1 className="pdp_brand">{brand}</h1> {/* brand name*/}
 										<h1 className="product_name">{name}</h1> {/* product name */}
-										{prices.map((price) => {
+										{prices.forEach((price) => {
 											if (price.currency.symbol === selectedCurrency) {
 												// Taking a right price for the product with selected currency
 												PRICE = price.amount;
 											}
-											return null;
 										})}
 										{/* Creating all attributes at once */}
 										<Attribute
 											attributes={attributes}
+											prices={prices}
 											price={PRICE}
 											addToCart={this.props.addToCart}
 											id={id}

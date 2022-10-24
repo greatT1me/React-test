@@ -22,8 +22,16 @@ export class MiniCart extends Component {
 					</h1>
 					<div className="scroll_container">
 						{Object.keys(inCartItems).map((item) => {
+							let PRICE = 0;
+							this.props.inCartItems[item].prices.forEach((price) => {
+								if (price.currency.symbol === selectedCurrency) {
+									// Taking a right price for the product with selected currency
+									PRICE = price.amount;
+								}
+							});
 							// Calculating total price
-							totalPrice += parseInt(inCartItems[item].price) * inCartItems[item].itemAmount;
+
+							totalPrice += parseInt(PRICE) * inCartItems[item].itemAmount;
 							// Adding item to minicart.
 							return (
 								<MiniCartItem

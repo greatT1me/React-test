@@ -48,17 +48,19 @@ export class Attribute extends Component {
 		// This function draw single box of color type attribute,
 		// using map it draws all the boxes of the given single attribute.
 		let chosen = this.state[attributeName] === color ? true : false;
+		// choose className for selected and not selected colorboxes
+		const classNam = chosen ? "attribute_color attribute_color_selected" : "attribute_color";
 		return (
 			<div
 				key={this.props.id + color}
 				style={{
-					border: `3px solid ${chosen ? "#1D1F22" : "#A6A6A6"}`,
+					// border: `3px solid ${chosen ? "#1D1F22" : "#A6A6A6"}`,
 					opacity: `${this.props.inStock ? null : 0.7}`,
 					color: `${color}`,
 					backgroundColor: `${color}`,
 					pointerEvents: `${this.props.inStock ? null : "none"}`,
 				}}
-				className="attribute_row"
+				className={classNam}
 				onClick={() => this.setState({ [attributeName]: color })}
 			></div>
 		);
@@ -67,10 +69,17 @@ export class Attribute extends Component {
 		// Checks if every atrtribute is chosen, to change btn-s color to green.
 		const ready = this.props.attributes.length === Object.keys(this.state).length;
 		let selectedCurrency = MyContext._currentValue;
+		let PRICE = 0;
+		this.props.prices.forEach((price) => {
+			if (price.currency.symbol === selectedCurrency) {
+				// Taking a right price for the product with selected currency
+				PRICE = price.amount;
+			}
+		});
 		return (
 			<div>
 				<h3 className="pdp_word_price">price:</h3>
-				<h2 className="pdp_price">{selectedCurrency + itemToSend.price}</h2>
+				<h2 className="pdp_price">{selectedCurrency + PRICE}</h2>
 				<div
 					className="add_btn"
 					style={{
@@ -92,9 +101,9 @@ export class Attribute extends Component {
 		}
 	}
 	render() {
-		const { attributes, price, id } = this.props;
+		const { attributes, prices, id } = this.props;
 		let newItemInfo = this.state;
-		const itemToSend = { ...newItemInfo, id: id, price: price };
+		const itemToSend = { ...newItemInfo, id: id, prices: prices };
 		return (
 			<div>
 				{attributes.map((attribute) => {

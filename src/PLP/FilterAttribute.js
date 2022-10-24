@@ -63,16 +63,20 @@ export class FilterAttribute extends Component {
 					<div className="flex color_filter_container">
 						{/* draw colo boxes*/}
 						{attributeValues.map((thisValue) => {
+							const classNam =
+								thisValue === currentFilter
+									? "each_filter_colorbox filter_attribute_color_selected"
+									: "each_filter_colorbox";
 							if (thisValue !== "swatch") {
 								// skip the first element of the array
 								return thisValue === "All" ? (
 									// the  "All" option box
 									<div
 										key={this.props.id + thisValue}
-										style={{
-											border: `2px solid ${thisValue === currentFilter ? "#1D1F22" : "#A6A6A6"}`,
-										}}
-										className="each_filter_colorbox"
+										// style={{
+										// 	border: `2px solid ${thisValue === currentFilter ? "#1D1F22" : "#A6A6A6"}`,
+										// }}
+										className={classNam}
 										onClick={() => filterElse(thisValue, currentFilter, attributeName)}
 									>
 										All
@@ -83,10 +87,8 @@ export class FilterAttribute extends Component {
 										key={"filters" + thisValue}
 										style={{
 											backgroundColor: `${thisValue}`,
-											color: `${"gray"}`,
-											border: `2px solid  ${thisValue === currentFilter ? "#1D1F22" : "#A6A6A6"}`,
 										}}
-										className="each_filter_colorbox"
+										className={classNam}
 										onClick={() => filterElse(thisValue, currentFilter, attributeName)}
 									></div>
 								);

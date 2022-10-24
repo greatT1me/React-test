@@ -132,6 +132,7 @@ class App extends Component {
 														removeFromCart={this.removeFromCart}
 														inCartItems={inCartItems}
 														UpdateItem={this.UpdateItem}
+														totalCartItemQuantity={totalCartItemQuantity}
 													/>
 												)}
 											/>

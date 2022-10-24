@@ -124,23 +124,28 @@
 	align-self: center;
 	justify-self: start;
 	align-items: center;
-	width: 20px;
-	height: 100%;
+	width: 24px;
+	height: 24px;
+	bottom: 16px;
+	right: 48px;
 	justify-content: center;
 	display: flex;
 	cursor: pointer;
+	background: rgba(0, 0, 0, 0.73);
 }
 
 .rightVector {
 	position: absolute;
 	align-self: center;
-	right: 0px;
+	bottom: 16px;
+	right: 16px;
 	align-items: center;
 	justify-content: center;
-	width: 20px;
-	height: 100%;
+	width: 24px;
+	height: 24px;
 	display: flex;
 	cursor: pointer;
+	background: rgba(0, 0, 0, 0.73);
 }
 
 .cart_attribute {
@@ -157,6 +162,23 @@
 	box-sizing: border-box;
 	background-color: white;
 	border: 1px solid #1d1f22;
+}
+
+.cart_attribute_color {
+	height: 34px;
+	width: 34px;
+	margin-right: 12px;
+	display: flex;
+	justify-content: center;
+	box-sizing: border-box;
+	border: 2px solid white;
+}
+.cart_attribute_value_selected {
+	color: white;
+	background-color: black;
+}
+.cart_attribute_color_selected {
+	outline: 2px solid #5ece7b;
 }
 .cart_attributeName {
 	margin: 20px 10px 8px 0;
@@ -185,23 +207,53 @@
 	}
 }
 
+.bottom_part {
+	margin-top: 32px;
+	display: grid;
+	grid-template-rows: 28px;
+	grid-row-gap: 10px;
+	grid-template-columns: 100px 200px;
+}
+
+.grit_column {
+	font-family: "Raleway";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 28px;
+}
 .cart_total {
-	font-size: 30px;
-	line-height: 34px;
-	font-family: Roboto;
+	font-size: 24px;
+	line-height: 28px;
+	font-family: Raleway;
 	font-style: normal;
 	font-weight: 500;
-	margin-top: 50px;
 	color: #1d1f22;
 }
 .cart_total_price {
 	font-family: Raleway;
 	font-style: normal;
-	font-weight: bold;
-	line-height: 160%;
-	font-size: 30px;
-	margin-top: 50px;
+	font-weight: 700;
+	line-height: 24px;
+	font-size: 24px;
 	color: #1d1f22;
-	text-align: right;
-	padding-right: calc(100%-1097px);
+}
+
+.order {
+	margin-top: 16px;
+	width: 279px;
+	height: 43px;
+	background: #5ece7b;
+	justify-content: center;
+	align-items: center;
+	font-family: "Raleway";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 120%;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	text-transform: uppercase;
+	color: #ffffff;
 }
