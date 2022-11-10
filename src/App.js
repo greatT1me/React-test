@@ -10,7 +10,7 @@ import Cart from "./Cart/Cart";
 import MiniCart from "./MiniCart/MiniCart";
 
 const client = new ApolloClient({
-	uri: "http://localhost:4000/graphql",
+	uri: "https://graphql-production-dca4.up.railway.app/",
 	cache: new InMemoryCache(),
 });
 const GET_DATA = gql`
